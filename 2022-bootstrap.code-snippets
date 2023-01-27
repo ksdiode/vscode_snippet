@@ -1,0 +1,171 @@
+{
+  "btn": {
+    "scope": "html, django-html",
+    "prefix": "btn",
+    "body": ["<button type=\"button\" class=\"btn btn-primary\">$0</button>"],
+    "description": "btn"
+  },
+  "a-btn": {
+    "scope": "html, django-html",
+    "prefix": "a-btn",
+    "body": ["<a href=\"\" class=\"btn btn-primary\">$0</a>"],
+    "description": "btn"
+  },
+  "bootstrap input form group": {
+    "scope": "html, django-html",
+    "prefix": "input",
+    "body": [
+      "<div class=\"mb-3\">",
+      "  <label for=\"$1\">$2:</label>",
+      "  <input type=\"$3\" id=\"$1\"  name=\"$1\" class=\"form-control\" placeholder=\"$2$0\" />",
+      "</div>"
+    ],
+    "description": "bootstrap input form group"
+  },
+  "bootstrap submit button": {
+    "scope": "html, django-html",
+    "prefix": "submit-btn",
+    "body": [
+      "<button type=\"submit\" class=\"btn btn-primary\"><i class=\"fa-solid fa-check\"></i> 완료</button>"
+    ],
+    "description": "bootstrap submit button"
+  },
+  "bootstrap table ": {
+    "scope": "html, django-html",
+    "prefix": "table",
+    "body": [
+      "<table class=\"table table-hover\">",
+      "  <thead>",
+      "    <tr>",
+      "      <th></th>",
+      "      <th></th>",
+      "      <th></th>",
+      "    </tr>",
+      "  </thead>",
+      "  <tbody>",
+      "    <tr>",
+      "      <td></td>",
+      "      <td></td>",
+      "      <td></td>",
+      "    </tr>",
+      "  </tbody>",
+      "</table>",
+      ""
+    ],
+    "description": "bootstrap table "
+  },
+  "bootstrap pagination": {
+    "scope": "html, django-html",
+    "prefix": "pagination",
+    "body": [
+      "<ul class=\"pagination justify-content-center my-3\">",
+      "  <li class=\"page-item\">",
+      "    <a class=\"page-link\" href=\"#\"><i class=\"fa-solid fa-angles-left\"></i></a>",
+      "  </li>",
+      "  <li class=\"page-item\">",
+      "    <a class=\"page-link\" href=\"#\"><i class=\"fa-solid fa-angle-left\"></i></a>",
+      "  </li>",
+      "  <li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li>",
+      "  <li class=\"page-item\"><a class=\"page-link active\" href=\"#\">2</a></li>",
+      "  <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>",
+      "  <li class=\"page-item\">",
+      "    <a class=\"page-link\" href=\"#\"><i class=\"fa-solid fa-angles-right\"></i></a>",
+      "  </li>",
+      "  <li class=\"page-item\">",
+      "    <a class=\"page-link\" href=\"#\"><i class=\"fa-solid fa-angle-right\"></i></a>",
+      "  </li>",
+      "</ul>",
+      ""
+    ],
+    "description": "bootstrap pagination"
+  },
+  "bootstrap badge": {
+    "scope": "html, django-html",
+    "prefix": "badge",
+    "body": ["<span class=\"badge bg-danger\">$1</span>", ""],
+    "description": "bootstrap badge"
+  },
+  "bootstrap pill badge": {
+    "scope": "html, django-html",
+    "prefix": "pill-badge",
+    "body": ["<span class=\"badge rounded-pill bg-danger\">$1</span>", ""],
+    "description": "bootstrap pill badge"
+  },
+  "bootstrap card": {
+    "scope": "html, django-html",
+    "prefix": "card",
+    "body": [
+      "<div class=\"card\">",
+      "  <img class=\"card-img-top\" src=\"\" alt=\"Card image\" />",
+      "  <div class=\"card-body\">",
+      "    <h4 class=\"card-title\"></h4>",
+      "    <p class=\"card-text\"></p>",
+      "    <a href=\"#\" class=\"card-link\"></a>",
+      "    <a href=\"#\" class=\"card-link\"></a>",
+      "  </div>",
+      "</div>",
+      ""
+    ],
+    "description": "bootstrap card"
+  },
+  "bootstrap dropdown": {
+    "scope": "html, django-html",
+    "prefix": "dropdown",
+    "body": [
+      "<div class=\"dropdown\">",
+      "  <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-bs-toggle=\"dropdown\">",
+      "    $1",
+      "  </button>",
+      "  <ul class=\"dropdown-menu\">",
+      "    <li><a class=\"dropdown-item\" href=\"#\">Link 1</a></li>",
+      "    <li><a class=\"dropdown-item\" href=\"#\">Link 2</a></li>",
+      "    <li><a class=\"dropdown-item\" href=\"#\">Link 3</a></li>",
+      "  </ul>",
+      "</div>"
+    ],
+    "description": "bootstrap dropdown"
+  },
+  "bootstrap row-2": {
+    "scope": "html, django-html",
+    "prefix": "row-2",
+    "body": [
+      "<div class=\"row\">",
+      "  <div class=\"col-sm-4\">$0</div>",
+      "  <div class=\"col-sm-8\"></div>",
+      "</div>"
+    ],
+    "description": "bootstrap row-2"
+  },
+  "bootstrap flex-2-grow": {
+    "scope": "html, django-html",
+    "prefix": "flex",
+    "body": [
+      "<div class=\"d-flex\">",
+      "  <div class=\"p-2\">$0</div>",
+      "  <div class=\"p-2 flex-grow-1\"></div>",
+      "</div>"
+    ],
+    "description": "bootstrap flex-2-grow"
+  },
+  "bootstrap flex-right": {
+    "scope": "html, django-html",
+    "prefix": "flex",
+    "body": [
+      "<div class=\"d-flex justify-content-end\">",
+      "  <div class=\"p-2\">$0</div>",
+      "  <div class=\"p-2\"></div>",
+      "</div>"
+    ],
+    "description": "bootstrap flex-right"
+  },
+  "bootstrap margin auto": {
+    "scope": "html, django-html",
+    "prefix": "center-box",
+    "body": [
+      "<div class=\"my-3 mx-auto\" style=\"width: 400px\">",
+      "  $0",
+      "</div>"
+    ],
+    "description": "bootstrap margin auto"
+  }
+}

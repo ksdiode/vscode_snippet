@@ -1,0 +1,29 @@
+{
+  "svelte store 생성 함수": {
+    "scope": "javascript",
+    "prefix": "store-svelte-function",
+    "body": [
+      "import { writable } from 'svelte/store';",
+      "",
+      "function set${1:Model}Data() {",
+      "  let initValue = {};",
+      "  const { subscribe, update } = writable(initValue);",
+      "",
+      "  const add = (data) => {};",
+      "  const edit = (data) => {};",
+      "  const remove = (id) => {};",
+      "",
+      "  return {",
+      "    subscribe,",
+      "    add,",
+      "    edit,",
+      "    remove,",
+      "  };",
+      "}",
+      "",
+      "export const ${1/(.*)/${1:/downcase}/}s = set$1Data();",
+      ""
+    ],
+    "description": "svelte store 생성 함수"
+  }
+}

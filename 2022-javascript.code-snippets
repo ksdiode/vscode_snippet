@@ -1,0 +1,97 @@
+{
+  "async-await-function": {
+    "scope": "javascript",
+    "prefix": "async-await-function",
+    "body": [
+      "async function $1() {",
+      "  try {",
+      "    const data = await $2;",
+      "    $0",
+      "  } catch (error) {",
+      "    console.log(error);",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "async-await-function"
+  },
+  "async-await-arrow-function": {
+    "scope": "javascript",
+    "prefix": "async-await-arrow-function",
+    "body": [
+      "cont $1 = async ($2) => {",
+      "  try {",
+      "    const data = await $3;",
+      "    $0",
+      "  } catch (error) {",
+      "    console.log(error);",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "async-await-arrow-function"
+  },
+  "express-route 파일 기본 구조": {
+    "scope": "javascript",
+    "prefix": "route",
+    "body": [
+      "const express = require(\"express\");",
+      "const router = express.Router();",
+      "",
+      "router.get(\"/\", (req, res) => {",
+      "  res.send(\"Hello world\");",
+      "});",
+      "",
+      "module.exports = router;",
+      ""
+    ],
+    "description": "express-route 파일 기본 구조"
+  },
+  "router-api 함수": {
+    "scope": "javascript",
+    "prefix": "router-api",
+    "body": [
+      "router.${1:get}(\"/$2\", (req, res) => {",
+      "  const $3 = {}",
+      "  res.json($3);",
+      "});",
+      ""
+    ],
+    "description": "router-api 함수"
+  },
+  "router-render 함수": {
+    "scope": "javascript",
+    "prefix": "router-api",
+    "body": [
+      "router.${1:get}(\"/$2\", (req, res) => {",
+      "",
+      "  res.render('', {});",
+      "});",
+      ""
+    ],
+    "description": "router-render 함수"
+  },
+  "body-parser": {
+    "scope": "javascript",
+    "prefix": "body-parser",
+    "body": [
+      "app.use(express.urlencoded({extended:false));",
+      "app.use(express.json());",
+      ""
+    ],
+    "description": "body-parser"
+  },
+  "hbs 설정하기": {
+    "scope": "javascript",
+    "prefix": "hbs-settings",
+    "body": [
+      "const hbs = require('hbs');",
+      "",
+      "app.set('view engine', 'html');",
+      "app.engine('html', hbs.__express);",
+      "hbs.registerPartials(__dirname + '/views/partials', function (err) {});",
+      ""
+    ],
+    "description": "hbs 설정하기"
+  }
+}

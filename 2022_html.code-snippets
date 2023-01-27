@@ -1,0 +1,38 @@
+{
+  "h_select": {
+    "scope": "html",
+    "prefix": "h_select",
+    "body": [
+      "<select name=\"\">",
+      "  <option value=\"1\" selected>옵션 1</option>",
+      "  <option value=\"2\">옵션 2</option>",
+      "  <option value=\"3\">옵션 3</option>",
+      "  <option value=\"4\">옵션 4</option>",
+      "</select>"
+    ],
+    "description": "h_select"
+  },
+  "bt-row-col": {
+    "scope": "html",
+    "prefix": "bt-row-col",
+    "body": [
+      "<div class=\"row\">",
+      "  <div class=\"col-$1\">",
+      "    ",
+      "  </div>",
+      "  <div class=\"col-$2\">",
+      "    ",
+      "  </div>",
+      "</div>"
+    ],
+    "description": "bt-row-col"
+  },
+  "bt-menu-item": {
+    "scope": "html",
+    "prefix": "bt-menu-item",
+    "body": [
+      "<li class=\"nav-item \"><a class=\"nav-link\" href=\"\">$1</a></li>"
+    ],
+    "description": "bt-menu-item"
+  }
+}

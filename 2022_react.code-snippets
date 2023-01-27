@@ -1,0 +1,98 @@
+{
+  "r-fc": {
+    "scope": "javascript,typescript",
+    "prefix": "r-fc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export default function $TM_FILENAME_BASE() {",
+      "  return (",
+      "    <div>",
+      "      <h2>$TM_FILENAME_BASE</h2>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "r-simple-fcomponent"
+  },
+  "r-form": {
+    "scope": "javascript,typescript",
+    "prefix": "r-form",
+    "body": [
+      "const txtTitle = useRef();",
+      "",
+      "const submit = (e) => {",
+      "  e.preventDefault();",
+      "",
+      "  txtTitle.current.value = '';",
+      "};",
+      "",
+      "return (",
+      "  <form onSubmit={submit}>",
+      "    <input ref={txtTitle} type=\"text\" placeholder=\"\" required />",
+      "    <button>확인</button>",
+      "  </form>",
+      ");"
+    ],
+    "description": "r-form"
+  },
+  "r-routes-basic": {
+    "scope": "javascript,typescript",
+    "prefix": "r-routes-basic",
+    "body": [
+      "import React from 'react';",
+      "import { Routes, Route } from 'react-router-dom';",
+      "import Home from './pages/Home';",
+      "import PageNotFound from './pages/PageNotFound';",
+      "",
+      "export default function AppRoutes({}) {",
+      "  return (",
+      "    <Routes>",
+      "      <Route path=\"/\" element={<Home />} />",
+      "      <Route path=\"/*\" element={<PageNotFound />} />",
+      "    </Routes>",
+      "  );",
+      "}",
+      ""
+    ],
+    "description": "r-routes-basic"
+  },
+  "<Route /> 추가": {
+    "scope": "javascript",
+    "prefix": "r-route",
+    "body": ["<Route path=\"/$1\" element={<$2 />} />", ""],
+    "description": "<Route /> 추가"
+  },
+  "<BrowserRouter>로 감싼 App 컴포넌트": {
+    "scope": "javascript",
+    "prefix": "r-route-app",
+    "body": [
+      "import AppRoutes from './AppRoutes';",
+      "import { BrowserRouter } from 'react-router-dom';",
+      "function App() {",
+      "  return (",
+      "    <BrowserRouter>",
+      "      <AppRoutes />",
+      "    </BrowserRouter>",
+      "  );",
+      "}",
+      "",
+      "export default App;",
+      ""
+    ],
+    "description": "<BrowserRouter>로 감싼 App 컴포넌트"
+  },
+  "r-route": {
+    "scope": "javascript",
+    "prefix": "r-route",
+    "body": ["<Route path=\"$1\" element={<Home />} />"],
+    "description": "r-route"
+  },
+  "r-navlink": {
+    "scope": "javascript",
+    "prefix": "r-navlink",
+    "body": ["<NavLink to=\"/$0\">$1</NavLink>"],
+    "description": "r-navlink"
+  }
+}

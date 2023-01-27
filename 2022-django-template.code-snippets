@@ -1,0 +1,145 @@
+{
+  "django page 템플릿": {
+    "scope": "django-html, html",
+    "prefix": "dj-page",
+    "body": [
+      "{% extends 'base.html' %}",
+      "",
+      "{% block content %}",
+      "  $0",
+      "{% endblock %}",
+      ""
+    ],
+    "description": "django page 템플릿"
+  },
+  "dj-form-error-message": {
+    "scope": "django-html, html",
+    "prefix": "dj-form-error-message",
+    "body": [
+      "{% if form.errors %}",
+      "    <div class=\"alert alert-danger\" role=\"alert\">",
+      "    {% for field in form %}",
+      "        {% if field.errors %}",
+      "        <strong>{{ field.label }}</strong>",
+      "        {{ field.errors }}",
+      "        {% endif %}",
+      "    {% endfor %}",
+      "    </div>",
+      "{% endif %}"
+    ],
+    "description": "dj-form-error-message"
+  },
+  "bootstrap content-page": {
+    "scope": "html, django-html",
+    "prefix": "content-page",
+    "body": [
+      "{% extends \"base.html\" %}",
+      "{% load static %}",
+      "",
+      "{% block content %}",
+      "<h1>${1:페이지 타이틀}</h1>",
+      "",
+      "$0",
+      "{% endblock %}",
+      ""
+    ],
+    "description": "bootstrap content-page"
+  },
+  "dj-form": {
+    "scope": "django-html, html",
+    "prefix": "dj-form",
+    "body": [
+      "<div class=\"container\">",
+      "    <h5 class=\"my-3 border-bottom pb-2\">$1</h5>",
+      "    <form method=\"post\" class=\"post-form my-3\">",
+      "        {% csrf_token %}",
+      "        {{ form.as_p }}",
+      "        <button type=\"submit\" class=\"btn btn-primary\">확인</button>",
+      "    </form>",
+      "</div>",
+      ""
+    ],
+    "description": "dj-form"
+  },
+  "dj-is-login": {
+    "scope": "django-html",
+    "prefix": "dj-is-login",
+    "body": ["{% if user.is_authenticated %}", "$0", "{% endif %}"],
+    "description": "dj-is-login"
+  },
+  "bootstrap block": {
+    "scope": "html, django-html",
+    "prefix": "block",
+    "body": ["{% block $1 %}", "$0", "{% endblock %}", ""],
+    "description": "bootstrap block"
+  },
+  "bootstrap form-page": {
+    "scope": "html, django-html",
+    "prefix": "form-page",
+    "body": [
+      "{% extends \"base.html\" %} ",
+      "{% load django_bootstrap5 %} ",
+      "",
+      "{% block content %}",
+      "<div  class=\"mx-auto\" style=\"width: 600px\">",
+      "  <h1>${1:페이지 타이틀}</h1>",
+      "",
+      "  <form action=\".\" method=\"post\" class=\"mt-5\">",
+      "    {% csrf_token %} ",
+      "    {% bootstrap_form form %}",
+      "",
+      "    <button type=\"submit\" class=\"btn btn-primary\">",
+      "      <i class=\"fas fa-check\"></i> 확인",
+      "    </button>",
+      "  </form>",
+      "</div>",
+      "{% endblock %}"
+    ],
+    "description": "bootstrap form-page"
+  },
+  "check-login": {
+    "scope": "django-html",
+    "prefix": "check-login",
+    "body": ["{% if user.is_authenticated %}", "  $0", "{% endif %}"],
+    "description": "check-login"
+  },
+  "d-flex-between": {
+    "scope": "django-html",
+    "prefix": "d-flex-between",
+    "body": [
+      "<div class=\"my-3 d-flex align-items-center justify-content-between\">",
+      "  <div>$0</div>",
+      "  <div></div>",
+      "</div>"
+    ],
+    "description": "d-flex-between"
+  },
+  "button btn": {
+    "scope": "django-html",
+    "prefix": "btn",
+    "body": [
+      "<button type=\"button\" class=\"btn btn-primary\">",
+      "  <i class=\"fas fa-check\"></i>",
+      "  등록",
+      "</button>"
+    ],
+    "description": "button btn"
+  },
+  "a btn": {
+    "scope": "django-html",
+    "prefix": "a-btn",
+    "body": [
+      "<a href=\"$0\" class=\"btn btn-primary\">",
+      "  <i class=\"fas fa-check\"></i>",
+      "  등록",
+      "</a>"
+    ],
+    "description": "a btn"
+  },
+  "avatar": {
+    "scope": "django-html",
+    "prefix": "avatar",
+    "body": ["{% load avatar %}", "{% avatar ${1:user} %}"],
+    "description": "avatar"
+  }
+}

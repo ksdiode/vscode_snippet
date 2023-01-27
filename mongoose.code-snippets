@@ -1,0 +1,31 @@
+{
+  "mongoose schema 정의": {
+    "scope": "javascript",
+    "prefix": "schema",
+    "body": [
+      "import mongoose from 'mongoose';",
+      "",
+      "const mongoose.${1:${TM_FILENAME_BASE}}Schema = Schema( {",
+      "",
+      "},",
+      "{ timestamps: true });",
+      "",
+      "",
+      "const ${1/(.*)/${1:/capitalize}/} = mongoose.model('${1/(.*)/${1:/capitalize}/} ', $1Schema);",
+      "module.exports = ${1/(.*)/${1:/capitalize}/} ;"
+    ],
+    "description": "mongoose schema 정의"
+  },
+  "mongoose index 필드 정의": {
+    "scope": "javascript",
+    "prefix": "index-field",
+    "body": ["$1: { type: String, required: true, index: { unique: true } }, "],
+    "description": "mongoose index 필드 정의"
+  },
+  "mongoose reference 필드 정의": {
+    "scope": "javascript",
+    "prefix": "reference-field",
+    "body": ["$1 : { type: Schema.ObjectId, ref: '${2:참조모델명}' },"],
+    "description": "mongoose reference 필드 정의"
+  }
+}

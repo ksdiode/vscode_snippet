@@ -1,0 +1,268 @@
+{
+  "django .vscode/settings.json": {
+    "prefix": "settings.json",
+    "body": [
+      "{",
+      "  \"files.associations\": {",
+      "    \"**/*.html\": \"html\",",
+      "    \"**/templates/**/*.html\": \"django-html\",",
+      "    \"**/templates/**/*\": \"django-txt\",",
+      "    \"**/requirements{/**,*}.{txt,in}\": \"pip-requirements\"",
+      "  },",
+      "  \"auto-close-tag.activationOnLanguage\": [\"*\"],",
+      "  \"emmet.includeLanguages\": {",
+      "    \"django-html\": \"html\"",
+      "  },",
+      "  \"unibeautify.enabled\": true,",
+      "  \"[django-html]\": {",
+      "    \"editor.formatOnSave\": true,",
+      "    \"editor.defaultFormatter\": \"Glavin001.unibeautify-vscode\"",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "django .vscode/settings.json"
+  },
+  "Django urls.py 템플릿": {
+    "scope": "python",
+    "prefix": "urls-pattern.py",
+    "body": [
+      "from django.urls import path",
+      "from . import views",
+      "",
+      "app_name = '${1:앱이름}'",
+      "",
+      "urlpatterns = [",
+      "  path('', views.${2:모델명}LV.as_view(), name='index'),",
+      "  path('detail/<int:pk>/', views.$2DV.as_view(), name='detail'),",
+      "  path('create/', views.$2CV.as_view(), name='create'),",
+      "  path('update/<int:pk>/', views.$2UV.as_view(), name='update'),",
+      "  path('delete/<int:pk>/', views.$2DelV.as_view(), name='delete'),",
+      "]",
+      ""
+    ],
+    "description": "Django urls.py 템플릿"
+  },
+  "Django Generic View 전체 템플릿": {
+    "scope": "python",
+    "prefix": "generic-view-full",
+    "body": [
+      "from django.urls import reverse, reverse_lazy",
+      "from django.views import generic",
+      "from django.contrib.auth.mixins import LoginRequiredMixin",
+      "from accounts.views import OwnerOnlyMixin",
+      "from .models import ${1: 모델명}",
+      "# from .forms import $1Forms",
+      "",
+      "",
+      "class $1LV(generic.ListView):",
+      "  model = $1",
+      "  template_name = '${1/(.*)/${1:/downcase}/}_list.html'",
+      "  context_object_name = '${1/(.*)/${1:/downcase}/}s'",
+      "  paginate_by = 10",
+      "",
+      "",
+      "class $1DV(generic.DetailView):",
+      "  model = $1",
+      "  template_name = '${1/(.*)/${1:/downcase}/}_detail.html'",
+      "  context_object_name = '${1/(.*)/${1:/downcase}/}'",
+      "",
+      "",
+      "class $1CV(LoginRequiredMixin, generic.CreateView):",
+      "  model = $1",
+      "  fields = ['${1/(.*)/${1:/downcase}/}', 'text']",
+      "  template_name = \"${1/(.*)/${1:/downcase}/}_form.html\"",
+      "  # form_class = $1Form",
+      "  success_url = reverse_lazy('${1/(.*)/${1:/downcase}/}:index')",
+      "",
+      "  def form_valid(self, form):",
+      "    form.instance.owner = self.request.user",
+      "    return super().form_valid(form)",
+      "",
+      "",
+      "class $1UV(OwnerOnlyMixin, generic.UpdateView):",
+      "  template_name = '${1/(.*)/${1:/downcase}/}_form.html'",
+      "  model = $1",
+      "  fields = ['${1/(.*)/${1:/downcase}/}', 'text']",
+      "  # form_class = $1Form",
+      "",
+      "  def get_success_url(self):",
+      "    ${1/(.*)/${1:/downcase}/} = self.get_object()",
+      "    return reverse('${1/(.*)/${1:/downcase}/}:detail', args=[str(${1/(.*)/${1:/downcase}/}.id)])",
+      "",
+      "",
+      "class $1DelV(OwnerOnlyMixin, generic.DeleteView):",
+      "  model = $1",
+      "  success_url = reverse_lazy('${1/(.*)/${1:/downcase}/}:index')",
+      "",
+      "  def get(self, *args, **kwargs):",
+      "    return self.delete(*args, **kwargs)",
+      ""
+    ],
+    "description": "Django Generic View 템플릿"
+  },
+  "Django Timezone ": {
+    "scope": "python",
+    "prefix": "timezone",
+    "body": ["from django.utils import timezone", "$0timezone.now()", ""],
+    "description": "Django Timezone "
+  },
+  "Django Model Class 정의": {
+    "scope": "python",
+    "prefix": "model-class",
+    "body": [
+      "from django.contrib.auth.models import User",
+      "# from accounts.models import User",
+      "from django.urls import reverse",
+      "",
+      "class ${1:모델명}(models.Model):",
+      "  owner = models.ForeignKey(User, related_name='photos', on_delete=models.CASCADE)",
+      "  $0",
+      "  created = models.DateTimeField('생성일', auto_now_add = True)",
+      "  updated = models.DateTimeField('수정일', auto_now = True)",
+      "",
+      "  class Meta:",
+      "    ordering = [\"-id\"]",
+      "",
+      "  def detail_url(self):",
+      "      return reverse(\"${1/(.*)/${1:/downcase}/}:detail\", args=[str(self.id)])",
+      "  ",
+      "  def update_url(self):",
+      "      return reverse(\"${1/(.*)/${1:/downcase}/}:update\", args=[str(self.id)])",
+      "  ",
+      "  def __str__(self):",
+      "    return f''",
+      "",
+      "  ",
+      "",
+      ""
+    ],
+    "description": "Django Model Class 정의"
+  },
+  "CharField 정의": {
+    "scope": "python",
+    "prefix": "charfield",
+    "body": [
+      "${1:필드명} = models.CharField(${2:라벨}, max_length=${3:128})",
+      "$0"
+    ],
+    "description": "CharField 정의"
+  },
+  "TextField 정의": {
+    "scope": "python",
+    "prefix": "textfield",
+    "body": ["${1:필드명} = models.TextField(${2:라벨})", "$0"],
+    "description": "TextField 정의"
+  },
+  "ForeignKey 정의": {
+    "scope": "python",
+    "prefix": "foreignkey",
+    "body": [
+      "${1:필드명} = models.ForeignKey(${2:부모모델}, related_name='${3:역참조}', on_delete=models.CASCADE)",
+      "$0"
+    ],
+    "description": "ForeignKey 정의"
+  },
+  "ManyToManyField정의": {
+    "scope": "python",
+    "prefix": "manytomanyfield",
+    "body": [
+      "${1:필드명} = models.ManyToManyField(${2:부모모델}, related_name='${3:역참조}')",
+      "$0"
+    ],
+    "description": "ManyToManyField정의"
+  },
+  "DateTimeField 정의": {
+    "scope": "python",
+    "prefix": "datetimefield",
+    "body": [
+      "${1:필드명} = models.DateTimeField('${2:라벨}', null=True, blank=True)",
+      "$0"
+    ],
+    "description": "DateTimeField 정의"
+  },
+  "FileField 정의": {
+    "scope": "python",
+    "prefix": "filefield",
+    "body": [
+      "${1:필드명} = models.FileField('${2:라벨}', upload_to=\"${3:기본위치}/%Y/%m/%d\")",
+      "$0"
+    ],
+    "description": "FileField 정의"
+  },
+  "Model Form 클래스 정의": {
+    "scope": "python",
+    "prefix": "modelform",
+    "body": [
+      "from django import forms",
+      "from .models import ${1:모델명}",
+      "class ${1}Form(forms.ModelForm):",
+      "  # 제정의 필요한 필드",
+      "  # files = forms.FileField(widget=forms.FileInput(attrs={'multiple': True}), blank=True)",
+      "",
+      "  class Meta:",
+      "    model = $1",
+      "    fields = [ $0 ]  # 포함할 필드목록",
+      ""
+    ],
+    "description": "Model Form 클래스 정의"
+  },
+  "get_context_data 재정의": {
+    "scope": "python",
+    "prefix": "get_context_data",
+    "body": [
+      "def get_context_data(self):",
+      "  context = super().get_context_data()",
+      "  # context 사전 구성",
+      "  $1",
+      "  return context",
+      ""
+    ],
+    "description": "get_context_data 재정의"
+  },
+  "get_object_or_404": {
+    "scope": "python",
+    "prefix": "get_object_or_404",
+    "body": [
+      "from django.shortcuts import get_object_or_404",
+      "",
+      "get_object_or_404($1, pk=pk)"
+    ],
+    "description": "get_object_or_404"
+  },
+  "LoginRequiredMixin 임포트": {
+    "scope": "python",
+    "prefix": "login-required-mixin",
+    "body": [
+      "from django.contrib.auth.mixins import LoginRequiredMixin",
+      "",
+      "LoginRequiredMixin"
+    ],
+    "description": "LoginRequiredMixin 임포트"
+  },
+  "Django Model Owner ForeignKey": {
+    "scope": "python",
+    "prefix": "owner",
+    "body": [
+      "owner = models.ForeignKey($0, on_delete=models.CASCADE, blank=True, null=True)",
+      ""
+    ],
+    "description": "Django Model Owner ForeignKey"
+  },
+  "Django Model Admin 클래스 정의": {
+    "scope": "python",
+    "prefix": "admin-class",
+    "body": [
+      "from .models import ${1:모델}",
+      "",
+      "class $1Admin(admin.ModelAdmin):",
+      "  list_display = ['id', 'created', 'updated'  ]",
+      "  list_filter = ['created', 'updated']",
+      "  search_fields = []",
+      "  ordering = ['-id']",
+      "",
+      "admin.site.register($1, $1Admin)"
+    ],
+    "description": "Django Model Admin 클래스 정의"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "jpa-string-field": {
+    "scope": "java",
+    "prefix": "jpa-string-field",
+    "body": [
+      "@Column(length = ${1:128}, nullable = false)",
+      "private String $0;",
+      ""
+    ],
+    "description": "jpa-string-field"
+  },
+  "jap-entity": {
+    "scope": "java",
+    "prefix": "jap-entity",
+    "body": [
+      "import javax.persistence.Column;",
+      "import javax.persistence.Entity;",
+      "import lombok.AllArgsConstructor;",
+      "import lombok.Builder;",
+      "import lombok.Data;",
+      "import lombok.NoArgsConstructor;",
+      "",
+      "@Entity",
+      "@Data",
+      "@Builder",
+      "@AllArgsConstructor",
+      "@NoArgsConstructor",
+      "class $TM_FILENAME_BASE extends BaseEntity {",
+      "",
+      "",
+      "}"
+    ],
+    "description": "jap-entity"
+  },
+  "jap-repository": {
+    "scope": "java",
+    "prefix": "jap-repository",
+    "body": [
+      "import org.springframework.data.jpa.repository.JpaRepository;",
+      "",
+      "public interface $TM_FILENAME_BASE extends JpaRepository<${1:Entity명}, Long> {}"
+    ],
+    "description": "jap-repository"
+  }
+}

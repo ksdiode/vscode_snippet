@@ -1,0 +1,115 @@
+{
+  "redux-store-provider": {
+    "scope": "javascript",
+    "prefix": "redux-store-provider",
+    "body": [
+      "import { Provider } from 'react-redux';",
+      "import { configureStore } from '@reduxjs/toolkit';",
+      "import reducer from './modules';",
+      "",
+      "const store = configureStore({ reducer });",
+      "",
+      "function StoreProvider({ children }) {",
+      "  return <Provider store={store}>{children}</Provider>;",
+      "}",
+      "",
+      "export default StoreProvider;"
+    ],
+    "description": "redux-store-provider"
+  },
+  "redux-module-index": {
+    "scope": "javascript",
+    "prefix": "redux-module-index",
+    "body": [
+      "// import 모듈명 from '모듈경로'",
+      "",
+      "import { combineReducers } from 'redux'",
+      "",
+      "export default combineReducers({",
+      "  // 모듈명,",
+      "",
+      "})"
+    ],
+    "description": "redux-module-index"
+  },
+  "redux-module": {
+    "scope": "javascript",
+    "prefix": "redux-module",
+    "body": [
+      "import { handleActions, createAction } from 'redux-actions';",
+      "",
+      "",
+      "// 액션 상수 정의",
+      "const ACTION = '$TM_FILENAME_BASE/ACTION';",
+      "",
+      "// 액션 생성 함수 정의",
+      "export default ACTION = createAction(ACTION);",
+      "",
+      "// 초기 상태",
+      "const initialState = {}",
+      "",
+      "// 리듀서 함수",
+      "export default handleActions({",
+      "  [INSERT]: (state, {payload}) = (),",
+      "",
+      "}, initialState);",
+      "",
+      ""
+    ],
+    "description": "redux-module"
+  },
+  "handle-action": {
+    "scope": "javascript",
+    "prefix": "handle-action",
+    "body": ["[$1]: (state, {payload}) = ($0),", ""],
+    "description": "handle-action"
+  },
+  "use-store": {
+    "scope": "javascript",
+    "prefix": "use-store",
+    "body": [
+      "import { useDispatch, useSelector } from \"react-redux\";",
+      "// import { action } from './modules/모듈';",
+      "",
+      "const module_state = useSelector(store => store.module_state);",
+      "const dispatch = useDispatch();",
+      ""
+    ],
+    "description": "use-store"
+  },
+  "slice": {
+    "scope": "javascript",
+    "prefix": "slice",
+    "body": [
+      "import { createAction, createSlice } from '@reduxjs/toolkit';",
+      "",
+      "// 액션 생성",
+      "const list = createAction('list');",
+      "const detail = createAction('detail');",
+      "const create = createAction('create');",
+      "const update = createAction('update');",
+      "const remove = createAction('remove');",
+      "",
+      "const initialState = {",
+      "  $1s: [],",
+      "};",
+      "",
+      "const reducer = createSlice({",
+      "  name: '$1',",
+      "  initialState,",
+      "  reducers: {",
+      "    [list]: (state) => state.todos,",
+      "    [detail]: (state, id) => state.todos.find(($1) => $1.id === id),",
+      "    [create]: (state, $1) => state.todos.push($1),",
+      "    [update]: (state, $1) => state.todos.push($1),",
+      "    [remove]: (state, id) => state.todos.filter(($1) => $1.id !== id),",
+      "  },",
+      "  extraReducers: {},",
+      "});",
+      "",
+      "export default reducer;",
+      ""
+    ],
+    "description": "slice"
+  }
+}

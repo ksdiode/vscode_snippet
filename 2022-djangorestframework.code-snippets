@@ -1,0 +1,83 @@
+{
+  "DRF용 urls.py 설정": {
+    "scope": "python",
+    "prefix": "drf-urls.py",
+    "body": [
+      "from rest_framework import routers",
+      "from django.urls import path, include",
+      "",
+      "from api.views import *",
+      "",
+      "router = routers.DefaultRouter()",
+      "router.register('user', UserViewSet)",
+      "",
+      "urlpatterns = [",
+      "  path('', include(router.urls)),",
+      "]"
+    ],
+    "description": "DRF용 urls.py 설정"
+  },
+  "DRF용 serializers.py 설정": {
+    "scope": "python",
+    "prefix": "drf-serializers.py",
+    "body": [
+      "from django.contrib.auth.models import User",
+      "from rest_framework import serializers",
+      "",
+      "class UserSerializer(serializers.HyperlinkedModelSerializer):",
+      "  class Meta:",
+      "    model = User",
+      "    fields = ['url', 'username', 'email']",
+      "",
+      "class UserBriefSerializer(serializers.HyperlinkedModelSerializer):",
+      "  class Meta:",
+      "    model = User",
+      "    fields = ['url', 'username']"
+    ],
+    "description": "DRF용 serializers.py 설정"
+  },
+  "DRF Serializer 클래스": {
+    "scope": "python",
+    "prefix": "drf-serializer-class",
+    "body": [
+      "class ${1:Model}Serializer(serializers.HyperlinkedModelSerializer):",
+      "  ",
+      "  # fk_field = serializers.ReadOnlyField(source='fk_field.username')",
+      "  ",
+      "  class Meta:",
+      "    model = $1",
+      "    fields = ['url', $2]"
+    ],
+    "description": "DRF Serializer 클래스"
+  },
+  "DRF views.p 모듈 내용": {
+    "scope": "python",
+    "prefix": "drf-views.py",
+    "body": [
+      "from rest_framework.pagination import PageNumberPagination ",
+      "from ${1/(.*)/${1:/downcase}/}.models import ${2:모델}",
+      "from ${1/(.*)/${1:/downcase}/}.serializers import $2Serializer",
+      "",
+      "",
+      "class $2ViewSet(viewsets.ModelViewSet):",
+      "  queryset = $2.objects.all()",
+      "  serializer_class = $2Serializer",
+      "  # pagination_class = $2Pagination",
+      ""
+    ],
+    "description": "DRF views.p 모듈 내용"
+  },
+  "DRF Pagination 클래스 정의": {
+    "scope": "python",
+    "prefix": "drf-pagination-class",
+    "body": [
+      "from rest_framework.pagination import PageNumberPagination ",
+      "",
+      "class $1Pagination(PageNumberPagination):",
+      "  page_size = 10",
+      "",
+      ""
+    ],
+    "description": "DRF Pagination 클래스 정의"
+  }
+}

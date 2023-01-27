@@ -1,0 +1,19 @@
+{
+  "next Link 컴포넌트": {
+    "scope": "javascript",
+    "prefix": "Link",
+    "body": ["<Link href=\"$1\">", "  <a>$0</a>", "</Link>"],
+    "description": "next Link 컴포넌트"
+  },
+  "next router query": {
+    "scope": "javascript",
+    "prefix": "query",
+    "body": [
+      "import {useRouter} from 'next/route'",
+      "",
+      "",
+      "const { query } = useRouter();"
+    ],
+    "description": "next router query"
+  }
+}

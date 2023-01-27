@@ -1,0 +1,49 @@
+{
+  "cv-capture": {
+    "scope": "python",
+    "prefix": "cv-capture",
+    "body": [
+      "import cv2",
+      "",
+      "cap = cv2.VideoCapture(${1:0})",
+      "",
+      "while True:",
+      "  retval, frame = cap.read()",
+      "  if not retval: break",
+      "",
+      "  $0",
+      "  cv2.imshow('frame', frame)",
+      "",
+      "  key = cv2.waitKey(25)",
+      "  if key == 27: break",
+      "  ",
+      "if cap.isOpened():",
+      "  cap.release()",
+      "",
+      "cv2.destroyAllWindows()"
+    ],
+    "description": "cv-capture"
+  },
+  "cv-videowriter": {
+    "scope": "python",
+    "prefix": "cv-videowriter",
+    "body": [
+      "fourcc = cv2.VideoWriter_fourcc(*'mp4v')",
+      "writer = cv2.VideoWriter('${1}.mp4', fourcc, 20.0, (640, 480))",
+      "",
+      "writer.write(frame)",
+      "",
+      "writer.release()",
+      ""
+    ],
+    "description": "cv-videowriter"
+  },
+  "cv-text": {
+    "scope": "python",
+    "prefix": "cv-text",
+    "body": [
+      "cv2.putText(frame, ${1:문자열}, ${2:좌표}, cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255))"
+    ],
+    "description": "cv-text"
+  }
+}

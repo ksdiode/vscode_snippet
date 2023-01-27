@@ -1,0 +1,116 @@
+{
+  "ic-home": {
+    "scope": "html, django-html",
+    "prefix": "ic-home",
+    "body": ["<i class=\"fas fa-home\"></i>"],
+    "description": "ic-home"
+  },
+  "ic-login": {
+    "scope": "html, django-html",
+    "prefix": "ic-login",
+    "body": ["<i class=\"fas fa-sign-in-alt\"></i>"],
+    "description": "ic-login"
+  },
+  "ic-user-plus": {
+    "scope": "html, django-html",
+    "prefix": "ic-user-plus",
+    "body": ["<i class=\"fas fa-user-plus\"></i>"],
+    "description": "ic-user-plus"
+  },
+  "ic-lock": {
+    "scope": "html, django-html",
+    "prefix": "ic-lock",
+    "body": ["<i class=\"fas fa-lock\"></i>"],
+    "description": "ic-lock"
+  },
+  "ic-email": {
+    "scope": "html, django-html",
+    "prefix": "ic-email",
+    "body": ["<i class=\"far fa-envelope\"></i>"],
+    "description": "ic-email"
+  },
+  "ic-setting": {
+    "scope": "html, django-html",
+    "prefix": "ic-setting",
+    "body": ["<i class=\"fas fa-cog\"></i>"],
+    "description": "ic-setting"
+  },
+  "ic-edit": {
+    "scope": "html, django-html",
+    "prefix": "ic-edit",
+    "body": ["<i class=\"fas fa-edit\"></i>"],
+    "description": "ic-edit"
+  },
+  "ic-delete": {
+    "scope": "html, django-html",
+    "prefix": "ic-delete",
+    "body": ["<i class=\"fas fa-trash-alt  text-danger\"></i>"],
+    "description": "ic-delete"
+  },
+  "ic-search": {
+    "scope": "html, django-html",
+    "prefix": "ic-search",
+    "body": ["<i class=\"fas fa-search\"></i>"],
+    "description": "ic-search"
+  },
+  "ic-image": {
+    "scope": "html, django-html",
+    "prefix": "ic-image",
+    "body": ["<i class=\"far fa-image\"></i>"],
+    "description": "ic-image"
+  },
+  "ic-camera": {
+    "scope": "html, django-html",
+    "prefix": "ic-camera",
+    "body": ["<i class=\"fas fa-camera\"></i>"],
+    "description": "ic-camera"
+  },
+  "ic-check": {
+    "scope": "html, django-html",
+    "prefix": "ic-check",
+    "body": ["<i class=\"fas fa-check\"></i>"],
+    "description": "ic-check"
+  },
+  "ic-clock": {
+    "scope": "html, django-html",
+    "prefix": "ic-clock",
+    "body": ["<i class=\"far fa-clock\"></i>"],
+    "description": "ic-clock"
+  },
+  "ic-link": {
+    "scope": "html, django-html",
+    "prefix": "ic-link",
+    "body": ["<i class=\"fas fa-external-link-alt\"></i>"],
+    "description": "ic-link"
+  },
+  "ic-heart": {
+    "scope": "html, django-html",
+    "prefix": "ic-heart",
+    "body": ["<i class=\"fas fa-heart\"></i>"],
+    "description": "ic-heart"
+  },
+  "ic-thumb": {
+    "scope": "html, django-html",
+    "prefix": "ic-thumb",
+    "body": ["<i class=\"fas fa-thumbs-up\"></i>"],
+    "description": "ic-thumb"
+  },
+  "ic-upload": {
+    "scope": "html, django-html",
+    "prefix": "ic-upload",
+    "body": ["<i class=\"fas fa-upload\"></i>"],
+    "description": "ic-upload"
+  },
+  "ic-download": {
+    "scope": "html, django-html",
+    "prefix": "ic-download",
+    "body": ["<i class=\"fas fa-download\"></i>"],
+    "description": "ic-download"
+  },
+  "ic-times": {
+    "scope": "html, django-html",
+    "prefix": "ic-times",
+    "body": ["<i class=\"fas fa-times text-danger\"></i>"],
+    "description": "ic-times"
+  }
+}

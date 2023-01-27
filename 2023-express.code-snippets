@@ -1,0 +1,58 @@
+{
+  "router 객체 설정 ": {
+    "scope": "javascript",
+    "prefix": "router",
+    "body": [
+      "import express from \"express\";",
+      "import { list, detial, create, update, remove} from \"../controllers/$1.js\";",
+      "",
+      "const router = express.Router();",
+      "",
+      "// 라우트 설정",
+      "router.get('/', list );",
+      "router.get('/:id', detail);",
+      "router.post('/', create);",
+      "router.put('/:id', update);",
+      "router.delete('/:id', remove);",
+      "",
+      "export default router;",
+      "",
+      ""
+    ],
+    "description": "router 객체 설정 "
+  },
+  "Mongoose Unique 필드 설정 ": {
+    "scope": "javascript",
+    "prefix": "unique-field",
+    "body": [
+      "$1: {",
+      "  type: String,",
+      "  require: true,",
+      "  max: 50,",
+      "  unique: true,",
+      "},",
+      ""
+    ],
+    "description": "Mongoose Unique 필드 설정 "
+  },
+  "Mongoose require 필드 설정 ": {
+    "scope": "javascript",
+    "prefix": "require-field",
+    "body": [
+      "$1: {",
+      "  type: String,",
+      "  require: true,",
+      "  min: 2,",
+      "  max: 50",
+      "},",
+      ""
+    ],
+    "description": "Mongoose require 필드 설정 "
+  },
+  "Mongoose array필드 설정 ": {
+    "scope": "javascript",
+    "prefix": "array-field",
+    "body": ["$1: {", "  type: Array,", "  default: [],", "}"],
+    "description": "Mongoose array필드 설정 "
+  }
+}

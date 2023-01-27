@@ -1,0 +1,72 @@
+{
+  "basic-properties-sb": {
+    "scope": "",
+    "prefix": "basic-properties-sb",
+    "body": [
+      "spring.datasource.driver-class-name=org.mariadb.jdbc.Driver",
+      "spring.datasource.url=jdbc:mariadb://localhost:3306/${1:db명}",
+      "spring.datasource.username=${2:db user}",
+      "spring.datasource.password=${3:password}",
+      "",
+      "spring.jpa.hibernate.ddl-auto=update",
+      "spring.jpa.properties.hibernate.format_sql=true",
+      "spring.jpa.show-sql=true",
+      "",
+      "spring.thymeleaf.cache=false"
+    ],
+    "description": "basic-properties"
+  },
+  "test-method-sb": {
+    "scope": "java",
+    "prefix": "sb-test-method",
+    "body": ["@Test", "public void test$1() {", "  $0", "}"],
+    "description": "sb-test-method"
+  },
+  "pagination-java": {
+    "scope": "java",
+    "prefix": "pagination-java",
+    "body": [
+      "Sort sort1 = Sort.by(\"id\").descending();",
+      "Pageable pageable = PageRequest.of(${1:page_num}, ${2:10}, sort1);",
+      "Page<$3> page = repo.findAll(pageable);"
+    ],
+    "description": "pagination-java"
+  },
+  "sb-controller": {
+    "scope": "java",
+    "prefix": "sb-controller",
+    "body": [
+      "import org.springframework.stereotype.Controller;",
+      "import org.springframework.web.bind.annotation.GetMapping;",
+      "import org.springframework.web.bind.annotation.RequestMapping;",
+      "import org.springframework.ui.Model;",
+      "",
+      "import lombok.extern.log4j.Log4j2;",
+      "",
+      "@Controller",
+      "@RequestMapping(\"/$1\")",
+      "@Log4j2",
+      ""
+    ],
+    "description": "sb-controller"
+  },
+  "get-method-sb": {
+    "scope": "java",
+    "prefix": "get-method-sb",
+    "body": [
+      "@GetMapping(\"/$1\")  ",
+      "public void $2(Model model) {",
+      "  log.info(\"$2........................\");",
+      "  $0",
+      "}",
+      ""
+    ],
+    "description": "get-method-sb"
+  },
+  "sb-test-method": {
+    "scope": "java",
+    "prefix": "sb-test-method",
+    "body": ["@Test", "public void $1() {", "  $0", "}"],
+    "description": "sb-test-method"
+  }
+}

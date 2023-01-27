@@ -1,0 +1,22 @@
+{
+  "jest descrbe 기본 골격": {
+    "scope": "javascript",
+    "prefix": "describe",
+    "body": [
+      "describe('$1', () => {",
+      "  $0",
+      "  test('$2', () => {",
+      "    expect().toEqual();",
+      "  });",
+      "});",
+      ""
+    ],
+    "description": "jest descrbe 기본 골격"
+  },
+  "jest test 기본 골격": {
+    "scope": "javascript",
+    "prefix": "test",
+    "body": ["test('$1', () => {", "  expect($2).toEqual();", "});", "", ""],
+    "description": "jest test 기본 골격"
+  }
+}

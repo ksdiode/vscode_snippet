@@ -1,0 +1,76 @@
+{
+  "mybatis-properties": {
+    "scope": "",
+    "prefix": "mybatis-properties",
+    "body": [
+      "mybatis.mapper-locations=mapper/**/*.xml",
+      "mybatis.type-aliases-package=com.example.basic.todo.dto",
+      "mybatis.configuration.map-underscore-to-camel-case=true",
+      "mybatis.configuration.cache-enabled=false"
+    ],
+    "description": "mybatis-properties"
+  },
+  "mapper-xml": {
+    "scope": "xml",
+    "prefix": "mapper-xml",
+    "body": [
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+      "",
+      "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\"",
+      "  \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">",
+      "",
+      "<mapper namespace=\"$1\">",
+      "$0",
+      "</mapper>"
+    ],
+    "description": "mapper-xml"
+  },
+  "crud-basic-mapper": {
+    "scope": "xml",
+    "prefix": "crud-basic-mapper",
+    "body": [
+      "<select id=\"findAll\" resultType=\"${1:Model}\">",
+      "  SELECT * FROM ${1/(.*)/${1:/downcase}/}",
+      "</select>",
+      "",
+      "<select id=\"findById\" resultType=\"$1\">",
+      "  SELECT * FROM ${1/(.*)/${1:/downcase}/} WHERE id = #{id}",
+      "</select>",
+      "",
+      "<insert id=\"create\" useGeneratedKeys=\"true\" keyColumn=\"id\" parameterType=\"$1\">",
+      "  INSERT INTO ${1/(.*)/${1:/downcase}/}",
+      "  VALUES ()",
+      "</insert>",
+      "",
+      "<update id=\"update\" parameterType=\"$1\">",
+      "  UPDATE ${1/(.*)/${1:/downcase}/} SET ",
+      "    $0",
+      "  WHERE id = #{id}",
+      "</update>",
+      "",
+      "<update id=\"delete\">",
+      "  DELETE FROM ${1/(.*)/${1:/downcase}/} WHERE id = #{id}",
+      "</update>"
+    ],
+    "description": "crud-basic-mapper"
+  },
+  "crud-mapper-interface": {
+    "scope": "java",
+    "prefix": "crud-mapper-interface",
+    "body": [
+      "import java.util.List;",
+      "import org.apache.ibatis.annotations.Mapper;",
+      "",
+      "@Mapper",
+      "public interface $TM_FILENAME_BASE{",
+      "  List<${1:Model}> findAll();",
+      "  Todo findById(Long id);",
+      "  void create($1 ${1/(.*)/${1:/downcase}/});",
+      "  void update($1 ${1/(.*)/${1:/downcase}/});",
+      "  void delete(Long id);",
+      "}",
+      ""
+    ],
+    "description": "crud-mapper-interface"
+  }
+}

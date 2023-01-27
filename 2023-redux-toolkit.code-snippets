@@ -1,0 +1,112 @@
+{
+  "redux-toolkit의 createSlice": {
+    "scope": "javascript",
+    "prefix": "slice",
+    "body": [
+      "import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';",
+      "import { useSelector, useDispatch } from 'react-redux';",
+      "",
+      "const name = '$TM_FILENAME_BASE';",
+      "const initialState = {",
+      "  value: 0,",
+      "};",
+      "",
+      "const ${TM_FILENAME_BASE}Slice = createSlice({",
+      "  name,",
+      "  initialState,",
+      "  reducers: {",
+      "    update(state, { payload }) {",
+      "      state.value += payload;",
+      "    },",
+      "  },",
+      "  extraReducers: (builder) => {",
+      "    ",
+      "  }",
+      "});",
+      "",
+      "export default ${TM_FILENAME_BASE}Slice.reducer;",
+      "",
+      "const { update } = ${TM_FILENAME_BASE}Slice.actions;",
+      "",
+      "export const use${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = () => {",
+      "  const $TM_FILENAME_BASE = useSelector((state) => state.$TM_FILENAME_BASE.value);",
+      "  const dispatch = useDispatch();",
+      "",
+      "  const update${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = (value) => dispatch(update(value));",
+      "",
+      "  return {",
+      "    $TM_FILENAME_BASE,",
+      "    update${TM_FILENAME_BASE/(.*)/${1:/capitalize}/},",
+      "  };",
+      "};",
+      ""
+    ],
+    "description": "redux-toolkit의 createSlice"
+  },
+  "redux-toolkit의 configureStore()": {
+    "scope": "javascript",
+    "prefix": "store",
+    "body": [
+      "import { configureStore } from '@reduxjs/toolkit';",
+      "import { Provider } from 'react-redux';",
+      "",
+      "export const store = configureStore({",
+      "  reducer: {",
+      "    ",
+      "  },",
+      "});",
+      "",
+      "export const StoreProvider = ({ children }) => {",
+      "  return <Provider store={store}>{children}</Provider>;",
+      "};",
+      ""
+    ],
+    "description": "redux-toolkit의 configureStore()"
+  },
+  "redux-toolkit의 createAsyncThunk()": {
+    "scope": "javascript",
+    "prefix": "createAsyncThunk",
+    "body": [
+      "const fetch$1 = createAsyncThunk(",
+      "  '',",
+      "  async ($2, thunkAPI) => {",
+      "    try {",
+      "      const response = await $3;",
+      "      return response.data;",
+      "    } catch(error) {",
+      "      return thunkAPI.rejectWithValue(error.response.data);",
+      "    }",
+      "  },",
+      ");",
+      ""
+    ],
+    "description": "redux-toolkit의 createAsyncThunk()"
+  },
+  "redux-toolkit의 slice.extraReducers 추가": {
+    "scope": "javascript",
+    "prefix": "extraReducers",
+    "body": [
+      "extraReducers: (builder) => {",
+      "  builder.addCase($1.fulfilled, (state, {payload}) => {",
+      "    // 상태 변경",
+      "    ",
+      "  });",
+      "}",
+      ""
+    ],
+    "description": "redux-toolkit의 slice.extraReducers 추가"
+  },
+  "redux-toolkit의 builder.addCase 추가": {
+    "scope": "javascript",
+    "prefix": "builder.addCase",
+    "body": [
+      "builder.addCase($1.fulfilled, (state, {payload}) => {",
+      "  // 상태 변경",
+      "  $0",
+      "});",
+      "",
+      ""
+    ],
+    "description": "redux-toolkit의 builder.addCase 추가"
+  }
+}

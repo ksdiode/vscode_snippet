@@ -1,0 +1,224 @@
+{
+  "starter-thymeleaf": {
+    "scope": "xml",
+    "prefix": "starter-thymeleaf",
+    "body": [
+      "<dependency>",
+      "    <groupId>org.springframework.boot</groupId>",
+      "    <artifactId>spring-boot-starter-thymeleaf</artifactId>",
+      "</dependency>"
+    ],
+    "description": "starter-thymeleaf"
+  },
+  "thymeleaf-extra-layout": {
+    "scope": "xml",
+    "prefix": "thymeleaf-extra-layout",
+    "body": [
+      "<dependency>",
+      "    <groupId>org.thymeleaf.extras</groupId>",
+      "    <artifactId>thymeleaf-extras-java8time</artifactId>",
+      "    <version>3.0.4.RELEASE</version>",
+      "</dependency>",
+      "<dependency>",
+      "    <groupId>nz.net.ultraq.thymeleaf</groupId>",
+      "    <artifactId>thymeleaf-layout-dialect</artifactId>",
+      "</dependency>",
+      ""
+    ],
+    "description": "thymeleaf-extra-layout"
+  },
+  "th-namespace": {
+    "scope": "html",
+    "prefix": "th-namespace",
+    "body": ["xmlns:th=\"http://www.thymeleaf.org\""],
+    "description": "th-namespace"
+  },
+  "th-html": {
+    "scope": "html",
+    "prefix": "th-html",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"kr\" xmlns:th=\"http://www.thymeleaf.org\">",
+      "<head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <title>Title</title>",
+      "</head>",
+      "<body>",
+      "$0",
+      "</body>",
+      "</html>"
+    ],
+    "description": "th-html"
+  },
+  "th-text": {
+    "scope": "html",
+    "prefix": "th-text",
+    "body": ["th:text=\"${$0}\""],
+    "description": "th-text"
+  },
+  "th-fragment": {
+    "scope": "html",
+    "prefix": "th-fragment",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html xmlns:th=\"http://www.thymeleaf.org\">",
+      "  <div th:fragment=\"${1:fragment_name}\">",
+      "    $0",
+      "  </div>",
+      "</html>"
+    ],
+    "description": "th-fragment"
+  },
+  "th-main-layout": {
+    "scope": "html",
+    "prefix": "th-main-layout",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"kr\" xmlns:th=\"http://www.thymeleaf.org\" xmlns:layout=\"http://www.ultraq.net.nz/thymeleaf/layout\">",
+      "  <head>",
+      "    <meta charset=\"UTF-8\" />",
+      "    <title>Title</title>",
+      "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+      "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css\"/>",
+      "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css\" rel=\"stylesheet\"/>",
+      "    <th:block layout:fragment=\"css\"></th:block>",
+      "  </head>",
+      "  <body>",
+      "    <th:block th:replace=\"fragments/header::header\"></th:block>",
+      "",
+      "    <div layout:fragment=\"content\" class=\"content\"></div>",
+      "",
+      "    <th:block th:replace=\"fragments/footer::footer\"></th:block>",
+      "",
+      "    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js\"></script>",
+      "    <th:block layout:fragment=\"script\"></th:block>",
+      "  </body>",
+      "</html>",
+      ""
+    ],
+    "description": "th-main-layout"
+  },
+  "th-page-fragment": {
+    "scope": "html",
+    "prefix": "th-page-fragment",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html",
+      "  xmlns:th=\"http://www.thymeleaf.org\"",
+      "  xmlns:layout=\"http://www.ultraq.net.nz/thymeleaf/layout\"",
+      "  layout:decorate=\"~{layouts/default}\"",
+      ">",
+      "  <div layout:fragment=\"content\">",
+      "    <h1>${1:페이지 제목}</h1>",
+      "    <div>$0</div>",
+      "  </div>",
+      "</html>",
+      ""
+    ],
+    "description": "th-page-fragment"
+  },
+  "th-each": {
+    "scope": "html",
+    "prefix": "th-each",
+    "body": ["th:each=\"$1, state : ${${2:list}}\""],
+    "description": "th-each"
+  },
+  "th-if": {
+    "scope": "html",
+    "prefix": "th-if",
+    "body": ["th:if=\"${${1:조건문}}\""],
+    "description": "th-if"
+  },
+  "th-unless": {
+    "scope": "html",
+    "prefix": "th-unless",
+    "body": ["th:unless=\"${$1:조건문}\""],
+    "description": "th-unless"
+  },
+  "th-class": {
+    "scope": "html",
+    "prefix": "th-class",
+    "body": ["th:class=\"${${1:조건문}}?'${2:class명}'\""],
+    "description": "th-class"
+  },
+  "th-href": {
+    "scope": "python",
+    "prefix": "th-href",
+    "body": ["<a th:href=\"@{$1}\">$0</a>"],
+    "description": "th-href"
+  },
+  "th-input-text-bt5": {
+    "scope": "html",
+    "prefix": "th-input-text-bt5",
+    "body": [
+      "<div class=\"form-group my-3\">",
+      "  <label for=\"${1:field명}\">${2:라벨}: </label>",
+      "  <input type=\"text\" th:field=\"*{$1}\" class=\"form-control\" />",
+      "  <span class=\"validation-error\" th:if=\"${#fields.hasErrors('name')}\">",
+      "    <i class=\"fa-solid fa-triangle-exclamation\"></i>",
+      "    <span th:errors=\"*{name}\"></span>",
+      "  </span>",
+      "</div>",
+      "",
+      "$0"
+    ],
+    "description": "th-input-text-bt5"
+  },
+  "th-form-bt5": {
+    "scope": "html",
+    "prefix": "th-form-bt5",
+    "body": [
+      "<form method=\"POST\" th:object=\"${${1:form_object}}\">",
+      "  <div th:if=\"${#fields.hasErrors()}\">",
+      "    <span class=\"validation-error\">",
+      "      <i class=\"fa-solid fa-triangle-exclamation\"></i>",
+      "      Please correct the problems below and resubmit.",
+      "    </span>",
+      "  </div>",
+      "",
+      "  <button type=\"submit\" class=\"btn btn-primary\">",
+      "  <i class=\"fas fa-check\"></i> 확인",
+      "</button>",
+      "</form>",
+      ""
+    ],
+    "description": "th-form-bt5"
+  },
+  "th-checkbox-bt5": {
+    "scope": "html",
+    "prefix": "th-checkbox-bt5",
+    "body": [
+      "<div class=\"form-check\">",
+      "  <input",
+      "    type=\"checkbox\"",
+      "    name=\"${1:name}\"",
+      "    th:id=\"${'$1_' + state.index}\"",
+      "    th:value=\"${${2:value}}\"",
+      "    th:checked=\"${${3:조건식}}\"",
+      "    class=\"form-check-input\"",
+      "  />",
+      "  <label th:for=\"${'$1_' + state.index}\" class=\"form-check-label\" th:text=\"${${4:라벨}}\"></label>",
+      "</div>"
+    ],
+    "description": "th-checkbox-bt5"
+  },
+  "th-radio-bt5": {
+    "scope": "html",
+    "prefix": "th-radio-bt5",
+    "body": [
+      "<div class=\"form-check\">",
+      "  <input",
+      "    type=\"radio\"",
+      "    name=\"${1:name}\"",
+      "    th:id=\"${'$1_' + state.index}\"",
+      "    th:value=\"${${2:value}}\"",
+      "    th:checked=\"${${3:조건식}}\"",
+      "    class=\"form-check-input\"",
+      "  />",
+      "  <label th:for=\"${'$1_' + state.index}\" class=\"form-check-label\" th:text=\"${${4:라벨}}\"></label>",
+      "</div>"
+    ],
+    "description": "th-radio-bt5"
+  }
+}

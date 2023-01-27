@@ -1,0 +1,192 @@
+{
+  "d-mariadb-settings.py": {
+    "scope": "python",
+    "prefix": "d-mariadb-settings.py",
+    "body": [
+      "",
+      "DATABASES = {",
+      "  'default': {",
+      "    'ENGINE': 'django.db.backends.mysql',",
+      "    'HOST': 'localhost',       # 데이터베이스 서버 IP",
+      "    'PORT': '3306',            # 포트번호",
+      "    'NAME': 'django_ex_db',    # 데이터베이스 명",
+      "    'USER': 'iot',             # 데이터베이스 사용자 ID",
+      "    'PASSWORD': '1234'         # 비밀번호",
+      "  }",
+      "}"
+    ],
+    "description": "d-mariadb-settings.py"
+  },
+  "d-media": {
+    "scope": "python",
+    "prefix": "d-media",
+    "body": [
+      "STATICFILES_DIRS = [ BASE_DIR / 'static']",
+      "",
+      "LOGIN_REDIRECT_URL = '/'",
+      "LOGOUT_REDIRECT_URL = '/'",
+      "",
+      "MEDIA_URL = '/media/'",
+      "MEDIA_ROOT = BASE_DIR / 'media'",
+      "",
+      "# config/urls.py",
+      "from django.conf.urls.static import static",
+      "from config import settings",
+      "if settings.DEBUG:",
+      "    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"
+    ],
+    "description": "d-media"
+  },
+  "d-urls.py": {
+    "scope": "python",
+    "prefix": "d-urls.py",
+    "body": [
+      "from django.urls import path",
+      "from . import views",
+      "",
+      "app_name = '${1:app}'",
+      "",
+      "urlpatterns = [",
+      "  $0",
+      "]",
+      ""
+    ],
+    "description": "d-urls.py"
+  },
+  "d-url": {
+    "scope": "html, django-html",
+    "prefix": "d-url",
+    "body": ["{% url '${1:app}:${2:name}' $3%}"],
+    "description": "d-url"
+  },
+  "d-path": {
+    "scope": "python",
+    "prefix": "d-path",
+    "body": ["path('$1', views.$2.as_view(), name='$3'),"],
+    "description": "d-path"
+  },
+  "d-app-urls.py": {
+    "scope": "python",
+    "prefix": "d-app-urls.py",
+    "body": [
+      "from django.urls import path",
+      "from . import views",
+      "",
+      "app_name = '$1'",
+      "",
+      "urlpatterns = [",
+      "  path('', views.index, name='index'),",
+      "",
+      "]",
+      ""
+    ],
+    "description": "d-app-urls.py"
+  },
+  "d-form-class": {
+    "scope": "python",
+    "prefix": "d-form-class",
+    "body": [
+      "class ${1:Model}Form(forms.ModelForm):",
+      "  class Meta:",
+      "    model = $1",
+      "    fields = ['$2', '$0'] # 직접 입력 받아야 하는 필드",
+      "",
+      "    widgets = {",
+      "      '$2': forms.TextInput(attrs={'class': 'form-control'}),",
+      "    }",
+      ""
+    ],
+    "description": "d-form-class"
+  },
+  "d-post-view-function": {
+    "scope": "python",
+    "prefix": "d-post-view-function",
+    "body": [
+      "if request.method == 'POST':",
+      "    form = ${1:Model}Form(request.POST)",
+      "    if form.is_valid():",
+      "        $2 = form.save(commit=False)",
+      "        $2.create_date = timezone.now()",
+      "        $2.save()",
+      "        return redirect('$3:index')",
+      "else:",
+      "    form = $1Form()",
+      "",
+      "context = {'form': form}",
+      "return render(request, '$3/$2_form.html', context)"
+    ],
+    "description": "d-post-view-function"
+  },
+  "d-foreignkey": {
+    "scope": "python",
+    "prefix": "d-foreignkey",
+    "body": [
+      "${1:필드명} = models.ForeignKey(${2:참조모델}, on_delete=models.CASCADE)"
+    ],
+    "description": "d-foreignkey"
+  },
+  "d-charfield": {
+    "scope": "python",
+    "prefix": "d-charfield",
+    "body": [
+      "${1:필드명} = models.CharField(\"${2:제목}\", max_length=${3:128})"
+    ],
+    "description": "d-charfield"
+  },
+  "d-voter": {
+    "scope": "python",
+    "prefix": "d-voter",
+    "body": [
+      "voter = models.ManyToManyField(User, related_name='voter_${1:모델명}')"
+    ],
+    "description": "d-voter"
+  },
+  "d-model-urls.py": {
+    "scope": "python",
+    "prefix": "d-model-urls.py",
+    "body": [
+      "from django.urls import path",
+      "from . import views",
+      "",
+      "app_name = '${1:app}'",
+      "",
+      "urlpatterns = [",
+      "  path('', views.${2:Model}ListView.as_view(), name='index'),",
+      "  path('detail/<int:pk>/', views.$2DetailView.as_view(), name='detail'),",
+      "  path('create/', views.$2CreateView.as_view(), name='create'),",
+      "  path('update/<int:pk>/', views.$2UpdateView.as_view(), name='update'),",
+      "  path('delete/<int:pk>/', views.$2DeleteView.as_view(), name='delete'),",
+      "]",
+      ""
+    ],
+    "description": "d-model-urls.py"
+  },
+  "listview": {
+    "scope": "python",
+    "prefix": "listview",
+    "body": [
+      "class ${1:model}ListView(generic.ListView):",
+      "  model = $1",
+      "  template_name = '${1/(.*)/${1:/downcase}/}_list.html'",
+      "  context_object_name = '${1/(.*)/${1:/downcase}/}s'"
+    ],
+    "description": "Generic ListView"
+  },
+  "detailview": {
+    "scope": "python",
+    "prefix": "detailview",
+    "body": [
+      "class ${1:model}DetailView(generic.DetailView):",
+      "  model = $1",
+      "  template_name = '${1/(.*)/${1:/downcase}/}_detail.html'",
+      "  context_object_name = '${1/(.*)/${1:/downcase}/}s'"
+    ],
+    "description": "Generic DetailView"
+  },
+  "generic-import": {
+    "scope": "python",
+    "prefix": "generic-import",
+    "body": ["from django.views import generic"],
+    "description": "import Generic View "
+  }
+}
