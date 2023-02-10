@@ -1,0 +1,8 @@
+{
+  "jest test 함수 정의": {
+    "scope": "javascript",
+    "prefix": "test",
+    "body": ["test('${1:테스트 설명}', () => {", "  expect($0).toBe();", "});"],
+    "description": "jest test 함수 정의"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "graphql schema 정의": {
+    "scope": "graphql",
+    "prefix": "schema",
+    "body": [
+      "type $1 {",
+      "  id: ID!",
+      "  $0",
+      "}",
+      "",
+      "input $1Input {",
+      "",
+      "}",
+      "",
+      "type Query {",
+      "  get$1List: [$1]",
+      "  get$1(id: ID!): $1",
+      "}",
+      "",
+      "type Mutation {",
+      "  add$1(${1/(.*)/${1:/downcase}/}: $1Input): $1",
+      "  update$1(${1/(.*)/${1:/downcase}/}: $1Input): $1",
+      "  remove$1(id: ID!): $1",
+      "}",
+      ""
+    ],
+    "description": "graphql schema 정의"
+  },
+  "graphql resolver": {
+    "scope": "javascript",
+    "prefix": "resolver",
+    "body": [
+      "const resolver = {",
+      "  Query: {",
+      "    get$1List: () => todos,",
+      "    get$1: (parent, args, ctx, info) => {}",
+      "  },",
+      "  Mutation: {",
+      "    add$1(parent, { ${1/(.*)/${1:/downcase}/} }, ctx, info) {",
+      "    },",
+      "    update$1(parent, { ${1/(.*)/${1:/downcase}/} }, ctx, info) {",
+      "    },",
+      "    remove$1(parent, { id }, ctx, info) {",
+      "    },",
+      "  },",
+      "};",
+      "",
+      "export default resolver;",
+      ""
+    ],
+    "description": "graphql resolver"
+  }
+}

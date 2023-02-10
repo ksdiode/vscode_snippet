@@ -1,47 +1,32 @@
 {
-  "redux-toolkit의 createSlice": {
+  "redux-toolkit의 slice 파일 생성": {
     "scope": "javascript",
     "prefix": "slice",
     "body": [
-      "import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';",
-      "import { useSelector, useDispatch } from 'react-redux';",
-      "",
-      "const name = '$TM_FILENAME_BASE';",
-      "const initialState = {",
-      "  value: 0,",
-      "};",
+      "import { createSlice } from '@reduxjs/toolkit';",
+      "import { useDispatch } from 'react-redux';",
       "",
       "const ${TM_FILENAME_BASE}Slice = createSlice({",
-      "  name,",
-      "  initialState,",
+      "  name: '$TM_FILENAME_BASE',",
+      "  initialState: { data: null },",
       "  reducers: {",
-      "    update(state, { payload }) {",
-      "      state.value += payload;",
-      "    },",
+      "    _action: (state, { payload: data }) => (state.anchor = data),",
       "  },",
-      "  extraReducers: (builder) => {",
-      "    ",
-      "  }",
+      "  // extraReducers: (builder) =>buildExtraReducers(builder, 'data', _getTodosThunk),",
       "});",
       "",
-      "export default ${TM_FILENAME_BASE}Slice.reducer;",
-      "",
-      "const { update } = ${TM_FILENAME_BASE}Slice.actions;",
-      "",
       "export const use${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = () => {",
-      "  const $TM_FILENAME_BASE = useSelector((state) => state.$TM_FILENAME_BASE.value);",
+      "  const { _action } = ${TM_FILENAME_BASE}Slice.actions;",
       "  const dispatch = useDispatch();",
-      "",
-      "  const update${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = (value) => dispatch(update(value));",
-      "",
       "  return {",
-      "    $TM_FILENAME_BASE,",
-      "    update${TM_FILENAME_BASE/(.*)/${1:/capitalize}/},",
+      "    action: (data) => dispatch(_action(data)),",
       "  };",
       "};",
+      "",
+      "export default ${TM_FILENAME_BASE}Slice.reducer;",
       ""
     ],
-    "description": "redux-toolkit의 createSlice"
+    "description": "redux-toolkit의 slice 파일 생성"
   },
   "redux-toolkit의 configureStore()": {
     "scope": "javascript",
@@ -63,24 +48,23 @@
     ],
     "description": "redux-toolkit의 configureStore()"
   },
-  "redux-toolkit의 createAsyncThunk()": {
+  "createAsyncThunk 액션 생성 함수": {
     "scope": "javascript",
     "prefix": "createAsyncThunk",
     "body": [
-      "const fetch$1 = createAsyncThunk(",
-      "  '',",
-      "  async ($2, thunkAPI) => {",
+      "export const _$1Thunk = createAsyncThunk(",
+      "  '$TM_FILENAME_BASE/$1Thunk',",
+      "  async (thunkAPI) => {",
       "    try {",
-      "      const response = await $3;",
-      "      return response.data;",
-      "    } catch(error) {",
-      "      return thunkAPI.rejectWithValue(error.response.data);",
+      "      const res = await axios.get('http://$0');",
+      "      return res.data; // action의 payload가 됨",
+      "    } catch (error) {",
+      "      return thunkAPI.rejectWithValue(error);",
       "    }",
-      "  },",
-      ");",
-      ""
+      "  }",
+      ");"
     ],
-    "description": "redux-toolkit의 createAsyncThunk()"
+    "description": "createAsyncThunk 액션 생성 함수"
   },
   "redux-toolkit의 slice.extraReducers 추가": {
     "scope": "javascript",

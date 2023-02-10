@@ -1,0 +1,14 @@
+{
+  "MUI IconButton": {
+    "scope": "javascript",
+    "prefix": "mui-icon-button",
+    "body": ["<IconButton onClick={$0}>", "  <${1:Icon명} />", "</IconButton>"],
+    "description": "MUI IconButton"
+  },
+  "MUI Icon Import": {
+    "scope": "javascript",
+    "prefix": "mui-icon-import",
+    "body": ["import $1Icon from \"@mui/icons-material/$1\";"],
+    "description": "MUI Icon Import"
+  }
+}

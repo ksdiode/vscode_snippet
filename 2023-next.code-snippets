@@ -1,4 +1,34 @@
 {
+  "Next Layout 파일 템플릿": {
+    "scope": "javascript",
+    "prefix": "nx-layout",
+    "body": [
+      "export default function ${TM_DIRECTORY/.*\\\\([^\\\\]*)$/${1:/capitalize}/}Layout({ children }) {",
+      "  return (",
+      "    <div>",
+      "      {children}",
+      "    </div>",
+      "  );",
+      "}",
+      ""
+    ],
+    "description": "Next Layout 파일 템플릿"
+  },
+  "Next Page 파일 템플릿": {
+    "scope": "javascript",
+    "prefix": "nx-page",
+    "body": [
+      "export default function ${TM_DIRECTORY/.*\\\\([^\\\\]*)$/${1:/capitalize}/}({ params }) {",
+      "  return (",
+      "    <div>",
+      "      페이지 내용",
+      "    </div>",
+      "  );",
+      "}",
+      ""
+    ],
+    "description": "Next Page 파일 템플릿"
+  },
   "next Link 컴포넌트": {
     "scope": "javascript",
     "prefix": "Link",

@@ -1,4 +1,10 @@
 {
+  "serializer-import": {
+    "scope": "python",
+    "prefix": "serializer-import",
+    "body": ["from rest_framework import serializers"],
+    "description": "serializer-import"
+  },
   "DRF용 urls.py 설정": {
     "scope": "python",
     "prefix": "drf-urls.py",
@@ -17,59 +23,42 @@
     ],
     "description": "DRF용 urls.py 설정"
   },
-  "DRF용 serializers.py 설정": {
-    "scope": "python",
-    "prefix": "drf-serializers.py",
-    "body": [
-      "from django.contrib.auth.models import User",
-      "from rest_framework import serializers",
-      "",
-      "class UserSerializer(serializers.HyperlinkedModelSerializer):",
-      "  class Meta:",
-      "    model = User",
-      "    fields = ['url', 'username', 'email']",
-      "",
-      "class UserBriefSerializer(serializers.HyperlinkedModelSerializer):",
-      "  class Meta:",
-      "    model = User",
-      "    fields = ['url', 'username']"
-    ],
-    "description": "DRF용 serializers.py 설정"
-  },
   "DRF Serializer 클래스": {
     "scope": "python",
-    "prefix": "drf-serializer-class",
+    "prefix": "serializer-class",
     "body": [
-      "class ${1:Model}Serializer(serializers.HyperlinkedModelSerializer):",
+      "from .models import ${1:Model}",
+      "",
+      "class $1Serializer(serializers.HyperlinkedModelSerializer):",
       "  ",
       "  # fk_field = serializers.ReadOnlyField(source='fk_field.username')",
       "  ",
       "  class Meta:",
       "    model = $1",
-      "    fields = ['url', $2]"
+      "    fields = '__all__'"
     ],
     "description": "DRF Serializer 클래스"
   },
-  "DRF views.p 모듈 내용": {
+  "ModelViewSet 하위 클래스 생성": {
     "scope": "python",
-    "prefix": "drf-views.py",
+    "prefix": "viewset",
     "body": [
-      "from rest_framework.pagination import PageNumberPagination ",
-      "from ${1/(.*)/${1:/downcase}/}.models import ${2:모델}",
-      "from ${1/(.*)/${1:/downcase}/}.serializers import $2Serializer",
+      "from rest_framework import viewsets",
+      "",
+      "from .models import ${1:Model}",
+      "from .serializers import $1Serializer",
       "",
       "",
-      "class $2ViewSet(viewsets.ModelViewSet):",
-      "  queryset = $2.objects.all()",
-      "  serializer_class = $2Serializer",
-      "  # pagination_class = $2Pagination",
+      "class $1ViewSet(viewsets.ModelViewSet):",
+      "  queryset = $1.objects.all()",
+      "  serializer_class = $1Serializer",
       ""
     ],
-    "description": "DRF views.p 모듈 내용"
+    "description": "ModelViewSet 하위 클래스 생성"
   },
   "DRF Pagination 클래스 정의": {
     "scope": "python",
-    "prefix": "drf-pagination-class",
+    "prefix": "pagination-class",
     "body": [
       "from rest_framework.pagination import PageNumberPagination ",
       "",
@@ -79,5 +68,20 @@
       ""
     ],
     "description": "DRF Pagination 클래스 정의"
+  },
+  "ModelViewSet 라우터 ": {
+    "scope": "python",
+    "prefix": "router-viewset",
+    "body": [
+      "from rest_framework import routers",
+      "from .views import ${1:Model}ViewSet",
+      "",
+      "router = routers.SimpleRouter()",
+      "router.register('${1/(.*)/${1:/downcase}/}', $1ViewSet)",
+      "",
+      "urlpatterns = router.urls",
+      ""
+    ],
+    "description": "ModelViewSet 라우터 "
   }
 }

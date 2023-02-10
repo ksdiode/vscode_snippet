@@ -1,15 +1,23 @@
 {
+  "mongdb url 문자열": {
+    "scope": "javascript",
+    "prefix": "mongdb-url",
+    "body": ["mongodb://127.0.0.1:27017/todos"],
+    "description": "mongdb url 문자열"
+  },
   "mongoose schema 정의": {
     "scope": "javascript",
     "prefix": "schema",
     "body": [
       "import mongoose from 'mongoose';",
+      "const mongoosePaginate = require('mongoose-paginate-v2');",
       "",
-      "const mongoose.${1:${TM_FILENAME_BASE}}Schema = Schema( {",
+      "const ${1:${TM_FILENAME_BASE}}Schema = mongoose.Schema( {",
       "",
       "},",
       "{ timestamps: true });",
       "",
+      "$1Schema.plugin(mongoosePaginate);",
       "",
       "const ${1/(.*)/${1:/capitalize}/} = mongoose.model('${1/(.*)/${1:/capitalize}/} ', $1Schema);",
       "module.exports = ${1/(.*)/${1:/capitalize}/} ;"
